@@ -212,29 +212,84 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Parallax movement on glowing blobs
-    const blobs = document.querySelectorAll('.glow-blob');
-    if (heroSec && blobs.length > 0) {
+    // 2. Dynamic Petal/Flower Spawning
+    const petalsContainer = document.getElementById('hero-petals-container');
+    if (petalsContainer) {
+        const petalCount = 20;
+        const petalPaths = [
+            "M15 0 C25 15 25 30 15 40 C5 30 5 15 15 0", // Classic Petal
+            "M15 0 C30 10 30 25 20 35 C10 25 0 10 15 0", // Curved Petal
+            "M20 10 C22 5 28 5 30 10 C35 12 35 18 30 20 C28 25 22 25 20 20 C15 18 15 12 20 10 Z" // Small flower
+        ];
+        
+        for (let i = 0; i < petalCount; i++) {
+            const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            svg.setAttribute("viewBox", "0 0 40 40");
+            svg.classList.add("floating-petal");
+            
+            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            const randomPath = petalPaths[Math.floor(Math.random() * petalPaths.length)];
+            path.setAttribute("d", randomPath);
+            path.setAttribute("fill", "currentColor");
+            svg.appendChild(path);
+            
+            // Random size, starting coordinates, wind speeds
+            const size = Math.random() * 20 + 15; // 15px to 35px
+            const left = Math.random() * 100;
+            const top = Math.random() * 100;
+            const delay = Math.random() * -20; // Spread initially
+            const duration = Math.random() * 15 + 15; // 15s to 30s
+            const swayDuration = Math.random() * 4 + 4; // 4s to 8s
+            
+            svg.style.width = `${size}px`;
+            svg.style.height = `${size}px`;
+            svg.style.left = `${left}%`;
+            svg.style.top = `${top}%`;
+            
+            svg.style.animation = `
+                floatDown ${duration}s linear infinite,
+                sway ${swayDuration}s ease-in-out infinite alternate
+            `;
+            svg.style.animationDelay = `${delay}s, ${Math.random() * 5}s`;
+            
+            petalsContainer.appendChild(svg);
+        }
+    }
+
+    // 3. Mouse wind-push on petals
+    if (heroSec && petalsContainer) {
         heroSec.addEventListener('mousemove', (e) => {
             const rect = heroSec.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
+            const mouseX = e.clientX - rect.left;
+            const mouseY = e.clientY - rect.top;
+            const petals = document.querySelectorAll('.floating-petal');
             
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            
-            const moveX = (x - centerX) * -0.03;
-            const moveY = (y - centerY) * -0.03;
-            
-            blobs.forEach((blob, index) => {
-                const speed = (index % 2 === 0) ? 0.8 : 1.2;
-                blob.style.transform = `translate(${moveX * speed}px, ${moveY * speed}px)`;
+            petals.forEach(petal => {
+                const petalRect = petal.getBoundingClientRect();
+                const petalX = petalRect.left + petalRect.width / 2 - rect.left;
+                const petalY = petalRect.top + petalRect.height / 2 - rect.top;
+                
+                const diffX = petalX - mouseX;
+                const diffY = petalY - mouseY;
+                const distance = Math.sqrt(diffX * diffX + diffY * diffY);
+                
+                // Wind push radius 200px
+                if (distance < 200) {
+                    const force = (200 - distance) / 200;
+                    const pushX = (diffX / distance) * 50 * force;
+                    const pushY = (diffY / distance) * 50 * force;
+                    
+                    petal.style.transform = `translate(${pushX}px, ${pushY}px) rotate(${force * 45}deg)`;
+                } else {
+                    petal.style.transform = 'translate(0px, 0px) rotate(0deg)';
+                }
             });
         });
 
         heroSec.addEventListener('mouseleave', () => {
-            blobs.forEach(blob => {
-                blob.style.transform = 'translate(0px, 0px)';
+            const petals = document.querySelectorAll('.floating-petal');
+            petals.forEach(petal => {
+                petal.style.transform = 'translate(0px, 0px) rotate(0deg)';
             });
         });
     }

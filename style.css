@@ -470,63 +470,53 @@ a {
     transform: translateY(0);
 }
 
-/* Animated Glowing Blobs */
-.glow-blob {
+/* Floating Petals Container */
+.hero-petals-container {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(70px);
-    z-index: 1;
-    opacity: 0.65;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.8s ease, background 0.8s ease;
+    z-index: 2;
+    overflow: hidden;
 }
 
-.blob-1 {
-    top: 10%;
-    left: 10%;
-    width: 320px;
-    height: 320px;
-    background: radial-gradient(circle, rgba(255, 107, 107, 0.45) 0%, rgba(255, 107, 107, 0) 70%);
+.floating-petal {
+    position: absolute;
+    color: var(--color-accent);
+    filter: drop-shadow(0 0 8px var(--glow-color));
+    opacity: 0.55;
+    pointer-events: none;
+    transform-origin: center;
+    transition: transform 0.4s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 0.8s ease;
 }
 
-.blob-2 {
-    bottom: 10%;
-    right: 10%;
-    width: 420px;
-    height: 420px;
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.45) 0%, rgba(139, 92, 246, 0) 70%);
+/* Animations for drifting and swaying */
+@keyframes floatDown {
+    0% {
+        top: -12%;
+    }
+    100% {
+        top: 112%;
+    }
 }
 
-.blob-3 {
-    top: 20%;
-    right: 15%;
-    width: 250px;
-    height: 250px;
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.4) 0%, rgba(16, 185, 129, 0) 70%);
+@keyframes sway {
+    0% {
+        transform: translateX(-40px) rotate(0deg);
+    }
+    100% {
+        transform: translateX(40px) rotate(360deg);
+    }
 }
 
-.blob-4 {
-    bottom: 25%;
-    left: 15%;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(197, 168, 128, 0.45) 0%, rgba(197, 168, 128, 0) 70%);
-}
-
-/* Dynamic theme overrides for blobs colors */
-body[data-theme="romance"] .glow-blob {
-    background: radial-gradient(circle, rgba(255, 107, 107, 0.5) 0%, rgba(255, 107, 107, 0) 70%);
+/* In dark/philosophy theme, make them slightly brighter */
+body[data-theme="philosophy"] .floating-petal {
     opacity: 0.7;
 }
-
-body[data-theme="philosophy"] .glow-blob {
-    background: radial-gradient(circle, rgba(139, 92, 246, 0.5) 0%, rgba(139, 92, 246, 0) 70%);
-    opacity: 0.8;
-}
-
-body[data-theme="irony"] .glow-blob {
-    background: radial-gradient(circle, rgba(16, 185, 129, 0.5) 0%, rgba(16, 185, 129, 0) 70%);
-    opacity: 0.8;
+body[data-theme="irony"] .floating-petal {
+    opacity: 0.7;
 }
 
 .scroll-down-hint {
