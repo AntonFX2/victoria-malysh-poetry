@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Официальный сайт-портфолио поэтессы Виктории Малыш. Светлая романтика, глубокая философия и жизненная ирония в стихах.">
+    <title>Виктория Малыш — Поэзия & Манускрипты</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body data-theme="default">
+    <!-- Ink Blot overlay container -->
+    <div id="ink-canvas" class="ink-canvas"></div>
+
+    <!-- Navigation Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <a href="#" class="logo">
+                <span class="logo-serif">В.</span><span class="logo-sans">Малыш</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="#hero" class="nav-link">Главная</a>
+                <a href="#poetry" class="nav-link">Архив листов</a>
+                <a href="#about" class="nav-link">Силуэт</a>
+                <a href="#book" class="nav-link">Сборник</a>
+            </nav>
+            <div class="theme-indicator">
+                <span class="theme-dot"></span>
+                <span class="theme-label" id="current-mood-label">Классический стиль</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="section-container hero-grid">
+                <!-- Book spread visual -->
+                <div class="book-container">
+                    <div class="book-page left-page">
+                        <div class="page-content">
+                            <span class="page-number">I</span>
+                            <div class="typed-poem-container">
+                                <p class="poem-line line-1">Я пишу эти строки на стыке времён,</p>
+                                <p class="poem-line line-2">Где неоновый свет в старый свиток влюблён.</p>
+                                <p class="poem-line line-3">Здесь чернила горят, словно звёзды в ночи,</p>
+                                <p class="poem-line line-4">Посиди же со мной и пока помолчи...</p>
+                            </div>
+                            <div class="book-footer">В. М.</div>
+                        </div>
+                    </div>
+                    <div class="book-page right-page">
+                        <div class="page-content-right">
+                            <div class="digital-art-frame">
+                                <img src="poetry_hero_art.png" alt="Поэзия Неона и Чернил" class="hero-art">
+                                <div class="glass-overlay">
+                                    <span class="art-caption"><i class="fa-solid fa-wand-magic-sparkles"></i> Лист 01. Рождение Смысла</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-down-hint">
+                <span class="scroll-text">Листать манускрипт</span>
+                <i class="fa-solid fa-chevron-down bounce-arrow"></i>
+            </div>
+        </section>
+
+        <!-- Poetry Vault Section -->
+        <section id="poetry" class="poetry-section">
+            <div class="section-container">
+                <div class="section-header">
+                    <h2 class="section-title">Архив листов</h2>
+                    <p class="section-subtitle">Выберите настроение, чтобы переписать реальность страницы</p>
+                </div>
+
+                <!-- Mood Controls -->
+                <div class="mood-selector">
+                    <button class="mood-btn active" data-mood="default" id="btn-default">
+                        <i class="fa-solid fa-feather"></i> Все стихи
+                    </button>
+                    <button class="mood-btn" data-mood="romance" id="btn-romance">
+                        <i class="fa-solid fa-heart"></i> Романтика
+                    </button>
+                    <button class="mood-btn" data-mood="philosophy" id="btn-philosophy">
+                        <i class="fa-solid fa-compass"></i> Философия
+                    </button>
+                    <button class="mood-btn" data-mood="irony" id="btn-irony">
+                        <i class="fa-solid fa-mask"></i> Ирония
+                    </button>
+                </div>
+
+                <!-- Poems Display Grid -->
+                <div class="poems-grid" id="poems-container">
+                    <!-- Poem 1: Romance -->
+                    <div class="poem-card card-romance" data-mood-type="romance">
+                        <div class="card-paper-texture"></div>
+                        <div class="poem-header">
+                            <span class="poem-mood-tag"><i class="fa-solid fa-heart"></i> романтика</span>
+                            <span class="poem-date">октябрь, 2025</span>
+                        </div>
+                        <h3 class="poem-title">Осенний чай вдвоём</h3>
+                        <div class="poem-text">
+                            <p>Дождь стучит по подоконнику дробью,</p>
+                            <p>Чай остыл, но тепло нам двоим.</p>
+                            <p>Осень красит листву яркой медью,</p>
+                            <p>Каждый миг рядом с сердцем твоим.</p>
+                            <p class="poem-strop-break"></p>
+                            <p>Мы молчим о деталях и планах,</p>
+                            <p>Укрываясь пушистым ковром.</p>
+                            <p>В этих сонных кофейных туманах</p>
+                            <p>Наш уютный, незыблемый дом.</p>
+                        </div>
+                        <div class="margin-note" data-note="Написано дождливым утром под стук капель по жестяному карнизу.">
+                            <i class="fa-solid fa-pencil"></i> на полях
+                        </div>
+                    </div>
+
+                    <!-- Poem 2: Philosophy -->
+                    <div class="poem-card card-philosophy" data-mood-type="philosophy">
+                        <div class="card-paper-texture"></div>
+                        <div class="poem-header">
+                            <span class="poem-mood-tag"><i class="fa-solid fa-compass"></i> философия</span>
+                            <span class="poem-date">ноябрь, 2025</span>
+                        </div>
+                        <h3 class="poem-title">Пыль библиотек</h3>
+                        <div class="poem-text">
+                            <p>Свет луны упал на старый шкаф,</p>
+                            <p>Где лежат истории веков.</p>
+                            <p>Каждый автор был немного прав,</p>
+                            <p>Освобождая мысли от оков.</p>
+                            <p class="poem-strop-break"></p>
+                            <p>Космос крутит вечное кино,</p>
+                            <p>Звёзды пишут свой нетленный стих.</p>
+                            <p>То, что нам понять не суждено,</p>
+                            <p>Спит в страницах фолиантов сих.</p>
+                        </div>
+                        <div class="margin-note" data-note="Размышления о конечности человеческого времени на фоне бесконечности Вселенной.">
+                            <i class="fa-solid fa-pencil"></i> на полях
+                        </div>
+                    </div>
+
+                    <!-- Poem 3: Irony -->
+                    <div class="poem-card card-irony" data-mood-type="irony">
+                        <div class="card-paper-texture"></div>
+                        <div class="poem-header">
+                            <span class="poem-mood-tag"><i class="fa-solid fa-mask"></i> ирония</span>
+                            <span class="poem-date">декабрь, 2025</span>
+                        </div>
+                        <h3 class="poem-title">Диета с понедельника</h3>
+                        <div class="poem-text">
+                            <p>Я решила: всё, конец пирожным!</p>
+                            <p>Листик сельдерея — мой герой.</p>
+                            <p>Быть красивой и худой несложно,</p>
+                            <p>Если холодильник за стеной...</p>
+                            <p class="poem-strop-break"></p>
+                            <p>Но пробило полночь. Из засады</p>
+                            <p>Кот крадётся тихо, словно тать.</p>
+                            <p>Мы друг другу молча очень рады,</p>
+                            <p>Будем вместе булку доедать!</p>
+                        </div>
+                        <div class="margin-note" data-note="Основано на реальных ночных переговорах с моим толстым серым котом.">
+                            <i class="fa-solid fa-pencil"></i> на полях
+                        </div>
+                    </div>
+
+                    <!-- Poem 4: Romance -->
+                    <div class="poem-card card-romance" data-mood-type="romance">
+                        <div class="card-paper-texture"></div>
+                        <div class="poem-header">
+                            <span class="poem-mood-tag"><i class="fa-solid fa-heart"></i> романтика</span>
+                            <span class="poem-date">январь, 2026</span>
+                        </div>
+                        <h3 class="poem-title">Неоновые крыши</h3>
+                        <div class="poem-text">
+                            <p>Город светится тысячей линий,</p>
+                            <p>Фиолетовый вечер померк.</p>
+                            <p>На твоих ресницах тонкий иней,</p>
+                            <p>Мы глядим на взлетающий вверх...</p>
+                            <p class="poem-strop-break"></p>
+                            <p>...Электрический свет от рекламы,</p>
+                            <p>Что раскрасил проспекты в рассвет.</p>
+                            <p>Среди этой безумной панорамы</p>
+                            <p>Никого, кроме нас двоих, нет.</p>
+                        </div>
+                        <div class="margin-note" data-note="Написано на смотровой площадке под неоновым табло кинотеатра.">
+                            <i class="fa-solid fa-pencil"></i> на полях
+                        </div>
+                    </div>
+
+                    <!-- Poem 5: Philosophy -->
+                    <div class="poem-card card-philosophy" data-mood-type="philosophy">
+                        <div class="card-paper-texture"></div>
+                        <div class="poem-header">
+                            <span class="poem-mood-tag"><i class="fa-solid fa-compass"></i> философия</span>
+                            <span class="poem-date">март, 2026</span>
+                        </div>
+                        <h3 class="poem-title">Следы на песке</h3>
+                        <div class="poem-text">
+                            <p>Океан смывает имена,</p>
+                            <p>Строит замки новые прилив.</p>
+                            <p>Каждая великая страна</p>
+                            <p>Помнит лишь короткий свой мотив.</p>
+                            <p class="poem-strop-break"></p>
+                            <p>Мы рисуем ветошью следы,</p>
+                            <p>Думая, что пишем на века.</p>
+                            <p>Но под шепот пенистой воды</p>
+                            <p>Вновь пустеет мокрая строка.</p>
+                        </div>
+                        <div class="margin-note" data-note="О мимолетности славы и важности ценить текущий момент здесь и сейчас.">
+                            <i class="fa-solid fa-pencil"></i> на полях
+                        </div>
+                    </div>
+
+                    <!-- Poem 6: Irony -->
+                    <div class="poem-card card-irony" data-mood-type="irony">
+                        <div class="card-paper-texture"></div>
+                        <div class="poem-header">
+                            <span class="poem-mood-tag"><i class="fa-solid fa-mask"></i> ирония</span>
+                            <span class="poem-date">май, 2026</span>
+                        </div>
+                        <h3 class="poem-title">Мессенджеры</h3>
+                        <div class="poem-text">
+                            <p>«ОК», «Принято», «Понял» и смайлик.</p>
+                            <p>Мы общаемся кодом из точек.</p>
+                            <p>Где-то плачет потерянный смайлик</p>
+                            <p>В миллионе разорванных строчек.</p>
+                            <p class="poem-strop-break"></p>
+                            <p>Раньше слали гонцов за три моря,</p>
+                            <p>Ждали писем годами во мгле...</p>
+                            <p>А сейчас — пара точек на споре,</p>
+                            <p>И забанен твой друг на Земле.</p>
+                        </div>
+                        <div class="margin-note" data-note="Саркастический взгляд на упрощение человеческих эмоций до набора пикселей.">
+                            <i class="fa-solid fa-pencil"></i> на полях
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Author (Silhouette) Section -->
+        <section id="about" class="about-section">
+            <div class="section-container about-grid">
+                <!-- Silhouette image and graphic decoration -->
+                <div class="silhouette-container">
+                    <div class="silhouette-box">
+                        <!-- Custom designed SVG Silhouette Collage -->
+                        <svg class="silhouette-svg" viewBox="0 0 400 500" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Neon Rings -->
+                            <circle cx="200" cy="220" r="140" stroke="url(#neon-grad)" stroke-width="2" stroke-dasharray="10 5" class="spin-slow" />
+                            <circle cx="200" cy="220" r="160" stroke="url(#coral-grad)" stroke-width="1" stroke-dasharray="20 10" class="spin-reverse-slow" />
+                            
+                            <!-- Mysterious Profile Silhouette Grid (Masked) -->
+                            <g mask="url(#silhouette-mask)">
+                                <!-- Silhouette Backing -->
+                                <path d="M100 500 C100 400 130 350 160 330 C170 320 175 300 170 280 C165 260 155 240 155 210 C155 130 200 90 250 110 C300 130 305 180 295 240 C285 290 270 310 275 330 C285 350 310 400 310 500 H100 Z" fill="#1A1D20" />
+                                <!-- Handwriting Text Overlay inside Silhouette -->
+                                <text x="120" y="160" fill="#FAF6EE" font-size="10" font-family="'EB Garamond', serif" opacity="0.35">любовь вечность ирония туман дождь</text>
+                                <text x="140" y="200" fill="#FAF6EE" font-size="11" font-family="'EB Garamond', serif" opacity="0.25" font-style="italic">неоновый свет старых книг свиток</text>
+                                <text x="110" y="240" fill="#FAF6EE" font-size="10" font-family="'EB Garamond', serif" opacity="0.3">чернила расплываются мысли тают</text>
+                                <text x="130" y="280" fill="#FAF6EE" font-size="12" font-family="'EB Garamond', serif" opacity="0.4" font-weight="bold">Виктория Малыш</text>
+                                <text x="150" y="320" fill="#FAF6EE" font-size="10" font-family="'EB Garamond', serif" opacity="0.3">ночные стихи на чеках чашка чая</text>
+                                <text x="100" y="360" fill="#FAF6EE" font-size="9" font-family="'EB Garamond', serif" opacity="0.2">завтра наступит новый день и мы</text>
+                                <text x="120" y="400" fill="#FAF6EE" font-size="11" font-family="'EB Garamond', serif" opacity="0.35">будем смеяться над тем что болело</text>
+                            </g>
+                            
+                            <!-- Glowing overlay lines -->
+                            <path d="M170 280 C165 260 155 240 155 210 C155 130 200 90 250 110" stroke="url(#neon-grad)" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+                            <path d="M295 240 C285 290 270 310 275 330" stroke="url(#coral-grad)" stroke-width="2" stroke-linecap="round" opacity="0.8" />
+
+                            <!-- Definitions for Gradients and Masks -->
+                            <defs>
+                                <linearGradient id="neon-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#8B5CF6" />
+                                    <stop offset="100%" stop-color="#10B981" />
+                                </linearGradient>
+                                <linearGradient id="coral-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#FF6B6B" />
+                                    <stop offset="100%" stop-color="#8B5CF6" />
+                                </linearGradient>
+                                <mask id="silhouette-mask">
+                                    <path d="M100 500 C100 400 130 350 160 330 C170 320 175 300 170 280 C165 260 155 240 155 210 C155 130 200 90 250 110 C300 130 305 180 295 240 C285 290 270 310 275 330 C285 350 310 400 310 500 H100 Z" fill="white" />
+                                </mask>
+                            </defs>
+                        </svg>
+                        <div class="silhouette-glitch-border"></div>
+                    </div>
+                </div>
+
+                <!-- Text Description -->
+                <div class="about-content">
+                    <span class="category-label"><i class="fa-solid fa-fingerprint"></i> Профиль Силуэта</span>
+                    <h2 class="about-title">Виктория Малыш</h2>
+                    <p class="about-lead">«Виктория Малыш — это не имя в паспорте. Это тот, кто сидит за соседним столиком в шумной кофейне и слишком чутко слушает обрывки чужих фраз»</p>
+                    
+                    <div class="about-text-blocks">
+                        <p>Она ищет рифму к слову „вечность“ на помятых магазинных чеках и находит забавное в вещах, о которых принято говорить с суровым лицом. Стихи Виктории — это романтика, которая не боится повседневного быта, философия, не требующая университетских кафедр, и спасительная самоирония.</p>
+                        <p>Настоящая личность автора скрыта за буквами и метафорами. В эпоху тотального самовыражения и фотоотчётов Виктория Малыш выбирает оставаться тенью на полях своей рукописи. Ведь стихи должны звучать громче, чем образ их создателя.</p>
+                    </div>
+
+                    <div class="author-credo">
+                        <i class="fa-solid fa-quote-left credo-quote"></i>
+                        <p class="credo-text">Писать для души — значит бережно протирать пыль с окон, в которые смотрит уставший мир.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Book Announcement Section (Pre-order / Subscription) -->
+        <section id="book" class="book-section">
+            <div class="section-container book-grid">
+                <!-- Book Showcase -->
+                <div class="book-showcase">
+                    <div class="book-canvas-3d">
+                        <div class="book-3d">
+                            <div class="book-cover-front">
+                                <div class="cover-design">
+                                    <div class="gold-frame"></div>
+                                    <span class="cover-author">В. Малыш</span>
+                                    <h3 class="cover-title">Бумажный<br>Неон</h3>
+                                    <span class="cover-badge">первый сборник</span>
+                                    <div class="cover-art-preview"></div>
+                                </div>
+                            </div>
+                            <div class="book-spine">
+                                <span class="spine-text">Виктория Малыш — Бумажный Неон — 2026</span>
+                            </div>
+                            <div class="book-pages-stack"></div>
+                            <div class="book-cover-back"></div>
+                        </div>
+                    </div>
+                    <div class="book-meta-spec">
+                        <span class="spec-item"><i class="fa-solid fa-book-open"></i> 144 страницы</span>
+                        <span class="spec-item"><i class="fa-solid fa-feather-pointed"></i> Твёрдый переплёт + суперобложка</span>
+                        <span class="spec-item"><i class="fa-solid fa-sparkles"></i> Лимитированный тираж</span>
+                    </div>
+                </div>
+
+                <!-- Envelope Newsletter Container -->
+                <div class="newsletter-container">
+                    <span class="category-label"><i class="fa-solid fa-envelope-open-text"></i> Скоро в печати</span>
+                    <h2 class="newsletter-title">Анонс сборника «Бумажный Неон»</h2>
+                    <p class="newsletter-description">
+                        Печатный тираж выйдет в конце этого года. Станьте участником закрытого клуба читателей, чтобы получить эксклюзивную скидку 20% при старте продаж, доступ к опросам о дизайне издания и секретную главу стихов на почту прямо сейчас.
+                    </p>
+
+                    <!-- Interactive Envelope Form -->
+                    <div class="envelope-wrapper" id="envelope-wrapper">
+                        <div class="envelope">
+                            <!-- Back Flap -->
+                            <div class="envelope-flap"></div>
+                            <!-- Front body with slot -->
+                            <div class="envelope-paper">
+                                <div class="letter-form">
+                                    <p class="letter-greeting">Дорогому читателю...</p>
+                                    <div class="letter-inputs">
+                                        <div class="input-field-group">
+                                            <input type="email" id="subscriber-email" class="letter-input" placeholder=" " required autocomplete="off">
+                                            <label for="subscriber-email" class="input-label">Ваш e-mail адрес</label>
+                                        </div>
+                                    </div>
+                                    <p class="letter-sign-off">С теплом, В.М.</p>
+                                </div>
+                            </div>
+                            <!-- Wax Seal Trigger Button -->
+                            <button type="button" class="wax-seal" id="wax-seal-btn">
+                                <div class="wax-seal-inner">
+                                    <i class="fa-solid fa-stamp stamp-icon"></i>
+                                    <span class="seal-text">Запечатать</span>
+                                </div>
+                            </button>
+                        </div>
+                        
+                        <!-- Success Message Envelope State -->
+                        <div class="envelope-success" id="envelope-success">
+                            <div class="success-seal-icon"><i class="fa-solid fa-circle-check"></i></div>
+                            <h3>Письмо отправлено!</h3>
+                            <p>Мы бережно добавили ваш адрес в список первых читателей. В течение 5 минут на почту прилетит секретный лист с автографом.</p>
+                            <button type="button" class="reset-envelope-btn" id="reset-envelope-btn">Отправить другое письмо</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <p class="footer-copyright">&copy; 2026 Виктория Малыш. Написано для души.</p>
+            <div class="footer-socials">
+                <a href="#" class="social-link" title="Telegram"><i class="fa-brands fa-telegram"></i></a>
+                <a href="#" class="social-link" title="VK"><i class="fa-brands fa-vk"></i></a>
+                <a href="#" class="social-link" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                <a href="#" class="social-link" title="Email"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JS Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
