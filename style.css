@@ -257,74 +257,84 @@ a {
 /* ==========================================================================
    HERO SECTION & BOOK SPREAD
    ========================================================================== */
-/* ==========================================================================
-   HERO SECTION: SPLIT SCREEN (CONTRAST SPLIT)
-   ========================================================================== */
-.hero-split {
+.hero-section {
     min-height: 100vh;
     display: flex;
-    position: relative;
-    overflow: hidden;
-}
-
-/* Left Half: Classic Parchment */
-.hero-split-left {
-    flex: 1;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    background-color: var(--bg-base);
-    padding: 60px;
+    align-items: center;
+    padding-top: 100px;
     position: relative;
-    transition: var(--transition-smooth);
 }
 
-.left-paper-texture {
-    position: absolute;
-    top: 0;
-    left: 0;
+.hero-cosmic-grid {
     width: 100%;
-    height: 100%;
-    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.03) 0%, rgba(0,0,0,0) 80%);
-    pointer-events: none;
+    max-width: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 10;
 }
 
-.hero-poetry-container {
-    max-width: 480px;
+.floating-scroll-card {
+    width: 90%;
+    max-width: 580px;
+    background: rgba(var(--color-accent-rgb), 0.02);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 60px 50px;
+    box-shadow: 0 30px 60px var(--shadow-color), 
+                inset 0 0 30px rgba(var(--color-accent-rgb), 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    position: relative;
+    transition: transform 0.15s ease-out, box-shadow 0.5s ease, background 0.8s ease;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.floating-scroll-card:hover {
+    box-shadow: 0 40px 80px var(--shadow-color), 
+                0 0 30px var(--glow-color);
+}
+
+.scroll-card-inner {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    position: relative;
-    z-index: 2;
+    transform: translateZ(30px);
 }
 
-.poetry-monogram {
-    font-family: var(--font-serif);
-    font-size: 1.3rem;
-    font-style: italic;
+.scroll-card-frame {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border: 1px solid rgba(var(--color-accent-rgb), 0.35);
+    pointer-events: none;
+    border-radius: 4px;
+}
+
+.scroll-card-badge {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 600;
     color: var(--color-accent);
-    border: 1px solid var(--border-color);
-    width: 54px;
-    height: 54px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 35px;
-    box-shadow: 0 0 15px var(--glow-color);
-    background: var(--bg-paper);
-    transition: var(--transition-smooth);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
 }
 
-.typed-poem-container {
+.scroll-card-poem {
     font-family: var(--font-serif);
-    font-size: 1.45rem;
-    line-height: 1.9;
-    font-style: italic;
+    font-size: 1.55rem;
+    line-height: 1.8;
     color: var(--color-text);
-    transition: var(--transition-smooth);
+    font-style: italic;
+    margin-bottom: 30px;
 }
 
 .poem-line {
@@ -345,122 +355,73 @@ a {
     }
 }
 
-.poetry-signature {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    font-style: italic;
-    color: var(--color-accent);
-    margin-top: 35px;
-    opacity: 0.85;
-}
-
-/* Right Half: Dark Neon Digital Canvas */
-.hero-split-right {
-    flex: 1;
-    min-height: 100vh;
+.scroll-card-footer {
+    width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    background-color: #0E1115;
-    padding: 60px;
-    position: relative;
-    overflow: hidden;
+    gap: 15px;
 }
 
-/* Custom background neon light pulses in right side */
-.right-ambient-glow {
+.author-signature {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-style: italic;
+    opacity: 0.8;
+}
+
+.scroll-card-divider {
+    width: 60px;
+    height: 1px;
+    background-color: var(--color-accent);
+}
+
+/* Background Cosmic Glow */
+.cosmic-glow {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 80%;
-    height: 80%;
-    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.12) 0%, rgba(0, 0, 0, 0) 70%);
-    pointer-events: none;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--glow-color) 0%, rgba(0,0,0,0) 70%);
     z-index: 1;
-    animation: pulseGlowRight 8s infinite alternate ease-in-out;
+    pointer-events: none;
+    transition: var(--transition-smooth);
+    opacity: 0.8;
 }
 
-@keyframes pulseGlowRight {
-    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
-    100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1.2; }
-}
-
-.canvas-art-wrapper {
-    position: relative;
-    width: 85%;
-    max-width: 380px;
-    aspect-ratio: 1;
-    border-radius: 6px;
-    box-shadow: 0 25px 55px rgba(0,0,0,0.5);
-    z-index: 2;
-    transition: transform 0.5s ease;
-}
-
-.canvas-art-wrapper:hover {
-    transform: scale(1.02);
-}
-
-.canvas-art-img {
+/* Floating particles styling */
+.cosmic-particles {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
-    display: block;
+    pointer-events: none;
+    z-index: 2;
+    overflow: hidden;
 }
 
-.canvas-glow-border {
+.cosmic-particle {
     position: absolute;
-    top: -2px;
-    left: -2px;
-    right: -2px;
-    bottom: -2px;
-    border-radius: 8px;
-    background: linear-gradient(135deg, var(--color-accent) 0%, rgba(var(--color-accent-rgb), 0.2) 50%, var(--color-accent) 100%);
-    z-index: -1;
-    opacity: 0.8;
-    filter: drop-shadow(0 0 15px var(--glow-color));
+    border-radius: 50%;
+    background-color: var(--color-accent);
+    opacity: 0.25;
+    pointer-events: none;
+    animation: floatParticle 8s infinite ease-in-out;
 }
 
-.canvas-glass-card {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    right: 20px;
-    padding: 12px 20px;
-    background: rgba(14, 17, 21, 0.7);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 4px;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    z-index: 5;
+@keyframes floatParticle {
+    0%, 100% {
+        transform: translateY(0) translateX(0) scale(1);
+        opacity: 0.08;
+    }
+    50% {
+        transform: translateY(-40px) translateX(20px) scale(1.3);
+        opacity: 0.4;
+    }
 }
-
-.canvas-card-title {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: rgba(255,255,255,0.9);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-/* Dividing Glow Line */
-.hero-split-divider {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    width: 1px;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(var(--color-accent-rgb), 0) 0%, var(--color-accent) 50%, rgba(var(--color-accent-rgb), 0) 100%);
-    z-index: 10;
-    box-shadow: 0 0 12px var(--glow-color);
-}
-
-
 
 .scroll-down-hint {
     margin-top: 40px;
@@ -1369,26 +1330,6 @@ a {
    ========================================================================== */
 @media (max-width: 992px) {
     html { font-size: 15px; }
-
-    .hero-split {
-        flex-direction: column;
-        min-height: auto;
-    }
-
-    .hero-split-left, .hero-split-right {
-        flex: none;
-        width: 100%;
-        min-height: 50vh;
-        padding: 60px 30px;
-    }
-
-    .hero-split-divider {
-        width: 100%;
-        height: 1px;
-        left: 0;
-        top: 50%;
-        background: linear-gradient(to right, rgba(var(--color-accent-rgb), 0) 0%, var(--color-accent) 50%, rgba(var(--color-accent-rgb), 0) 100%);
-    }
 
     .book-container {
         aspect-ratio: auto;

@@ -185,30 +185,53 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       SPLIT SCREEN INTERACTIVE TILT ANIMATION
+       COSMIC HERO PARTICLES & PARALLAX SCROLL
        ========================================================================== */
-    const artWrapper = document.querySelector('.canvas-art-wrapper');
-    const splitRight = document.querySelector('.hero-split-right');
-    
-    if (artWrapper && splitRight) {
-        splitRight.addEventListener('mousemove', (e) => {
-            const rect = artWrapper.getBoundingClientRect();
-            // Calculate cursor offset from center of the art card
-            const cardCenterX = rect.left + rect.width / 2;
-            const cardCenterY = rect.top + rect.height / 2;
-            const offsetRefX = e.clientX - cardCenterX;
-            const offsetRefY = e.clientY - cardCenterY;
+    const cosmicContainer = document.getElementById('cosmic-particles');
+    const heroSection = document.getElementById('hero');
+    const scrollCard = document.getElementById('hero-scroll-card');
+
+    // 1. Spawn particles dynamically
+    if (cosmicContainer) {
+        const particleCount = 20;
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('cosmic-particle');
             
-            // Subtle tilt degrees limit
-            const tiltX = -offsetRefY / 12;
-            const tiltY = offsetRefX / 12;
+            const size = Math.random() * 5 + 2; // 2px to 7px
+            const left = Math.random() * 100; // 0% to 100%
+            const top = Math.random() * 100; // 0% to 100%
+            const delay = Math.random() * 8; // 0s to 8s
+            const duration = Math.random() * 6 + 6; // 6s to 12s
             
-            artWrapper.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale(1.02)`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.left = `${left}%`;
+            particle.style.top = `${top}%`;
+            particle.style.animationDelay = `${delay}s`;
+            particle.style.animationDuration = `${duration}s`;
+            
+            cosmicContainer.appendChild(particle);
+        }
+    }
+
+    // 2. Mouse Move 3D Parallax on Scroll Card
+    if (heroSection && scrollCard) {
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const tiltX = ((y - centerY) / centerY) * -12;
+            const tiltY = ((x - centerX) / centerX) * 12;
+            
+            scrollCard.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
         });
-        
-        splitRight.addEventListener('mouseleave', () => {
-            // Restore card transformation states
-            artWrapper.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1)';
+
+        heroSection.addEventListener('mouseleave', () => {
+            scrollCard.style.transform = 'rotateX(0deg) rotateY(0deg)';
         });
     }
 });
