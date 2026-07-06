@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- CSS Stylesheet -->
-    <link rel="stylesheet" href="style.css?v=4">
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body data-theme="default">
     <!-- Ink Blot overlay container -->
@@ -43,30 +43,41 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section id="hero" class="hero-section cosmic-scroll-theme">
-            <!-- Dynamic Neon Cosmic Glow Behind -->
-            <div class="cosmic-glow"></div>
-            <!-- Interactive Floating Particles -->
-            <div class="cosmic-particles" id="cosmic-particles"></div>
-            
-            <div class="section-container hero-cosmic-grid">
-                <div class="floating-scroll-card" id="hero-scroll-card">
-                    <div class="scroll-card-inner">
-                        <div class="scroll-card-frame"></div>
-                        <span class="scroll-card-badge">Лист 01 • Вступление</span>
+        <section id="hero" class="hero-section neoclassical-minimalism">
+            <!-- Decorative Glowing Blobs (Neon flowers/leaves representation) -->
+            <div class="glow-blob blob-1"></div>
+            <div class="glow-blob blob-2"></div>
+            <div class="glow-blob blob-3"></div>
+            <div class="glow-blob blob-4"></div>
+
+            <div class="section-container hero-minimalist-container">
+                <!-- Landing Screen Intro -->
+                <div class="hero-intro-wrapper" id="hero-intro-wrapper">
+                    <h1 class="hero-author-name">Виктория Малыш</h1>
+                    <p class="hero-author-tagline">Светлая романтика • Философия • Ирония</p>
+                    <button class="open-scroll-btn" id="open-scroll-btn">
+                        <i class="fa-solid fa-feather-pointed"></i> Читать вступление
+                    </button>
+                </div>
+                
+                <!-- Expanded Poem Screen -->
+                <div class="hero-poem-wrapper" id="hero-poem-wrapper">
+                    <div class="scroll-card-frame"></div>
+                    <div class="poem-text-content">
+                        <span class="poem-card-badge">Лист 01 • Вступление</span>
                         <div class="scroll-card-poem">
                             <p class="poem-line line-1">Я пишу эти строки на стыке времён,</p>
                             <p class="poem-line line-2">Где неоновый свет в старый свиток влюблён.</p>
                             <p class="poem-line line-3">Здесь чернила горят, словно звёзды в ночи,</p>
                             <p class="poem-line line-4">Посиди же со мной и пока помолчи...</p>
                         </div>
-                        <div class="scroll-card-footer">
-                            <span class="author-signature">Виктория Малыш</span>
-                            <div class="scroll-card-divider"></div>
-                        </div>
+                        <button class="close-scroll-btn" id="close-scroll-btn">
+                            <i class="fa-solid fa-xmark"></i> Закрыть свиток
+                        </button>
                     </div>
                 </div>
             </div>
+
             <div class="scroll-down-hint">
                 <span class="scroll-text">Листать манускрипт</span>
                 <i class="fa-solid fa-chevron-down bounce-arrow"></i>

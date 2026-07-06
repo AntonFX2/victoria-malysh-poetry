@@ -185,53 +185,57 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /* ==========================================================================
-       COSMIC HERO PARTICLES & PARALLAX SCROLL
+       NEOCLASSICAL MINIMALISM HERO INTERACTION
        ========================================================================== */
-    const cosmicContainer = document.getElementById('cosmic-particles');
-    const heroSection = document.getElementById('hero');
-    const scrollCard = document.getElementById('hero-scroll-card');
+    const heroSec = document.getElementById('hero');
+    const openBtn = document.getElementById('open-scroll-btn');
+    const closeBtn = document.getElementById('close-scroll-btn');
+    const authorName = document.querySelector('.hero-author-name');
 
-    // 1. Spawn particles dynamically
-    if (cosmicContainer) {
-        const particleCount = 20;
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('cosmic-particle');
-            
-            const size = Math.random() * 5 + 2; // 2px to 7px
-            const left = Math.random() * 100; // 0% to 100%
-            const top = Math.random() * 100; // 0% to 100%
-            const delay = Math.random() * 8; // 0s to 8s
-            const duration = Math.random() * 6 + 6; // 6s to 12s
-            
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.left = `${left}%`;
-            particle.style.top = `${top}%`;
-            particle.style.animationDelay = `${delay}s`;
-            particle.style.animationDuration = `${duration}s`;
-            
-            cosmicContainer.appendChild(particle);
-        }
+    // 1. Open / Close actions
+    if (openBtn && heroSec) {
+        openBtn.addEventListener('click', () => {
+            heroSec.classList.add('opened');
+        });
     }
 
-    // 2. Mouse Move 3D Parallax on Scroll Card
-    if (heroSection && scrollCard) {
-        heroSection.addEventListener('mousemove', (e) => {
-            const rect = heroSection.getBoundingClientRect();
+    if (authorName && heroSec) {
+        authorName.addEventListener('click', () => {
+            heroSec.classList.add('opened');
+        });
+    }
+
+    if (closeBtn && heroSec) {
+        closeBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            heroSec.classList.remove('opened');
+        });
+    }
+
+    // 2. Parallax movement on glowing blobs
+    const blobs = document.querySelectorAll('.glow-blob');
+    if (heroSec && blobs.length > 0) {
+        heroSec.addEventListener('mousemove', (e) => {
+            const rect = heroSec.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
-            const tiltX = ((y - centerY) / centerY) * -12;
-            const tiltY = ((x - centerX) / centerX) * 12;
             
-            scrollCard.style.transform = `rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+            const moveX = (x - centerX) * -0.03;
+            const moveY = (y - centerY) * -0.03;
+            
+            blobs.forEach((blob, index) => {
+                const speed = (index % 2 === 0) ? 0.8 : 1.2;
+                blob.style.transform = `translate(${moveX * speed}px, ${moveY * speed}px)`;
+            });
         });
 
-        heroSection.addEventListener('mouseleave', () => {
-            scrollCard.style.transform = 'rotateX(0deg) rotateY(0deg)';
+        heroSec.addEventListener('mouseleave', () => {
+            blobs.forEach(blob => {
+                blob.style.transform = 'translate(0px, 0px)';
+            });
         });
     }
 });
