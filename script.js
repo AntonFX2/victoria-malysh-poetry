@@ -183,6 +183,46 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    /* ==========================================================================
+       CABINET PARALLAX DESK SCENE ANIMATION
+       ========================================================================== */
+    const deskScene = document.getElementById('desk-scene');
+    const parallaxLayers = document.querySelectorAll('.parallax-layer');
+    
+    if (deskScene && parallaxLayers.length > 0) {
+        const baseRotations = {
+            'desk-art-frame': 5,
+            'back-sheet': -12,
+            'middle-sheet': -4,
+            'main-sheet': 2
+        };
+
+        window.addEventListener('mousemove', (e) => {
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
+
+            // Simple parallax translations and rotations based on data-depth
+            parallaxLayers.forEach(layer => {
+                const depth = parseFloat(layer.getAttribute('data-depth')) || 0.5;
+                
+                let baseRot = 0;
+                if (layer.classList.contains('desk-art-frame')) baseRot = baseRotations['desk-art-frame'];
+                else if (layer.classList.contains('back-sheet')) baseRot = baseRotations['back-sheet'];
+                else if (layer.classList.contains('middle-sheet')) baseRot = baseRotations['middle-sheet'];
+                else if (layer.classList.contains('main-sheet')) baseRot = baseRotations['main-sheet'];
+
+                const moveX = mouseX * depth * 0.04;
+                const moveY = mouseY * depth * 0.04;
+                const tiltX = -mouseY * depth * 0.015;
+                const tiltY = mouseX * depth * 0.015;
+
+                layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) rotate(${baseRot}deg) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+            });
+        });
+    }
 });
 
 // Dynamic shaking animation helper stylesheet addition for input validation errors

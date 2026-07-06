@@ -257,91 +257,205 @@ a {
 /* ==========================================================================
    HERO SECTION & BOOK SPREAD
    ========================================================================== */
-.hero-section {
+/* ==========================================================================
+   HERO SECTION: FLOATING DRAFTS (CABINET)
+   ========================================================================== */
+.hero-cabinet {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 100px;
+    padding-top: 80px;
     position: relative;
+    overflow: hidden;
+    perspective: 1000px;
 }
 
-.hero-grid {
+.cabinet-ambient-light {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120vw;
+    height: 120vh;
+    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.08) 0%, rgba(0, 0, 0, 0) 65%);
+    pointer-events: none;
+    z-index: 1;
+    animation: pulseLight 10s infinite alternate ease-in-out;
+}
+
+@keyframes pulseLight {
+    0% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.0); }
+    100% { opacity: 1.2; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+.hero-cabinet-grid {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.book-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 90%;
-    max-width: 1000px;
-    background: var(--bg-paper);
-    border-radius: 4px;
-    box-shadow: 0 15px 35px var(--shadow-color), 0 3px 10px rgba(0,0,0,0.05);
-    border: 1px solid var(--border-color);
     position: relative;
-    overflow: hidden;
-    aspect-ratio: 16 / 10;
-    transition: var(--transition-smooth);
+    z-index: 2;
 }
 
-/* Middle gutter spine line of the book */
-.book-container::after {
-    content: "";
+.parallax-desk-scene {
+    position: relative;
+    width: 100%;
+    max-width: 960px;
+    height: 520px;
+    transform-style: preserve-3d;
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.desk-element {
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+}
+
+/* Background digital art canvas frame */
+.desk-art-frame {
+    width: 320px;
+    height: 320px;
+    right: 5%;
+    top: 15%;
+    z-index: 1;
+    background: #000;
+    border-radius: 6px;
+    padding: 10px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 25px var(--glow-color);
+    border: 1px solid rgba(var(--color-accent-rgb), 0.25);
+    overflow: hidden;
+}
+
+.desk-art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.85;
+    border-radius: 4px;
+    filter: saturate(1.1);
+}
+
+.desk-art-glow {
     position: absolute;
     top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
+    left: 0;
+    width: 100%;
     height: 100%;
-    background: linear-gradient(to right, 
-        rgba(0, 0, 0, 0.08) 0%, 
-        rgba(0, 0, 0, 0.18) 40%, 
-        rgba(0, 0, 0, 0.25) 50%, 
-        rgba(0, 0, 0, 0.18) 60%, 
-        rgba(0, 0, 0, 0.08) 100%
-    );
-    z-index: 10;
+    background: linear-gradient(135deg, rgba(var(--color-accent-rgb), 0.2) 0%, rgba(0,0,0,0) 100%);
+    pointer-events: none;
 }
 
-.book-page {
-    padding: 60px 50px;
+/* Paper Draft Sheets base styling */
+.draft-sheet {
+    width: 380px;
+    height: 460px;
+    background: var(--bg-paper);
+    color: var(--color-text);
+    border: 1px solid var(--border-color);
+    box-shadow: 3px 12px 30px var(--shadow-color);
+    border-radius: 2px;
+    padding: 35px 30px;
+    transition: var(--transition-smooth), transform 0.1s ease-out;
+    background-image: 
+        repeating-linear-gradient(rgba(var(--color-accent-rgb), 0.0) 0px, rgba(var(--color-accent-rgb), 0.0) 23px, rgba(var(--color-accent-rgb), 0.1) 24px);
+}
+
+.sheet-content {
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: relative;
-    transition: var(--transition-smooth);
 }
 
-.left-page {
-    border-right: 1px solid rgba(0, 0, 0, 0.05);
+/* Stacked sheets positions and angles */
+.back-sheet {
+    left: 8%;
+    top: 5%;
+    z-index: 2;
+    opacity: 0.65;
+    background: var(--bg-paper);
+    filter: blur(0.5px) brightness(0.9);
 }
 
-.page-content {
+.middle-sheet {
+    left: 18%;
+    top: 10%;
+    z-index: 3;
+    opacity: 0.85;
+    background: var(--bg-paper);
+    filter: brightness(0.95);
+}
+
+.main-sheet {
+    left: 28%;
+    top: 15%;
+    z-index: 4;
+    box-shadow: 8px 20px 45px rgba(0,0,0,0.18), 0 0 15px var(--glow-color);
+    background: var(--bg-base);
+}
+
+/* Draft Content details */
+.draft-title {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 0.4;
+    text-transform: uppercase;
+}
+
+.draft-scribble {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    line-height: 1.8;
+    font-style: italic;
+    opacity: 0.35;
+    margin-top: 10px;
+}
+
+.sheet-header-tag {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
+    align-items: center;
+    gap: 8px;
 }
 
-.page-number {
+.sheet-signature {
     font-family: var(--font-serif);
     font-size: 1.1rem;
     font-style: italic;
-    opacity: 0.4;
-    margin-bottom: 30px;
+    align-self: flex-end;
+    color: var(--color-accent);
+    opacity: 0.8;
+}
+
+.ink-stain-small {
+    position: absolute;
+    bottom: 40px;
+    right: 40px;
+    width: 25px;
+    height: 25px;
+    background: var(--color-text);
+    border-radius: 50%;
+    opacity: 0.08;
+    filter: blur(1.5px);
 }
 
 .typed-poem-container {
     font-family: var(--font-serif);
-    font-size: 1.45rem;
+    font-size: 1.35rem;
     line-height: 1.8;
-    color: var(--color-text);
     font-style: italic;
+    color: var(--color-text);
+    margin-top: 10px;
 }
 
 .poem-line {
@@ -362,73 +476,6 @@ a {
     }
 }
 
-.book-footer {
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 2px;
-    opacity: 0.5;
-    margin-top: 30px;
-}
-
-.page-content-right {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.right-page {
-    background-color: var(--bg-paper);
-}
-
-/* Digital art frame */
-.digital-art-frame {
-    width: 90%;
-    height: 90%;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    background: #000;
-}
-
-.hero-art {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.85;
-    transition: transform 0.5s ease;
-}
-
-.digital-art-frame:hover .hero-art {
-    transform: scale(1.05);
-}
-
-.glass-overlay {
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-    right: 15px;
-    padding: 10px 15px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 4px;
-    z-index: 5;
-}
-
-.art-caption {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: #fff;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
 .scroll-down-hint {
     margin-top: 40px;
