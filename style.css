@@ -707,11 +707,11 @@ a {
 
 .silhouette-box {
     width: 100%;
-    max-width: 380px;
+    max-width: 280px;
     position: relative;
     border: 1px solid var(--border-color);
     background: var(--bg-paper);
-    padding: 20px;
+    padding: 12px;
     border-radius: 4px;
     box-shadow: 0 15px 35px var(--shadow-color);
     transition: var(--transition-smooth);
@@ -719,7 +719,8 @@ a {
 
 .profile-photo {
     width: 100%;
-    height: auto;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
     display: block;
     border-radius: 4px;
     filter: sepia(0.2) contrast(0.95);
