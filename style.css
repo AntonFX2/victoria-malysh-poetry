@@ -481,13 +481,11 @@ a {
 }
 
 .floating-petal {
-    position: absolute;
     color: var(--color-accent);
-    filter: drop-shadow(0 0 8px var(--glow-color));
-    opacity: 0.55;
+    filter: drop-shadow(0 0 10px var(--glow-color));
+    opacity: 0.65;
     pointer-events: none;
     transform-origin: center;
-    transition: transform 0.4s cubic-bezier(0.1, 0.8, 0.3, 1), opacity 0.8s ease;
 }
 
 /* Animations for drifting and swaying */
@@ -502,19 +500,19 @@ a {
 
 @keyframes sway {
     0% {
-        transform: translateX(-40px) rotate(0deg);
+        transform: translateX(-45px) rotate(-15deg);
     }
     100% {
-        transform: translateX(40px) rotate(360deg);
+        transform: translateX(45px) rotate(15deg);
     }
 }
 
-/* In dark/philosophy theme, make them slightly brighter */
+/* In dark themes, make them slightly brighter */
 body[data-theme="philosophy"] .floating-petal {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 body[data-theme="irony"] .floating-petal {
-    opacity: 0.7;
+    opacity: 0.8;
 }
 
 .scroll-down-hint {

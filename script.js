@@ -223,6 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
         ];
         
         for (let i = 0; i < petalCount; i++) {
+            const wrapper = document.createElement("div");
+            wrapper.classList.add("petal-wrapper");
+            
             const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
             svg.setAttribute("viewBox", "0 0 40 40");
             svg.classList.add("floating-petal");
@@ -232,6 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
             path.setAttribute("d", randomPath);
             path.setAttribute("fill", "currentColor");
             svg.appendChild(path);
+            wrapper.appendChild(svg);
             
             // Random size, starting coordinates, wind speeds
             const size = Math.random() * 20 + 15; // 15px to 35px
@@ -241,18 +245,25 @@ document.addEventListener('DOMContentLoaded', () => {
             const duration = Math.random() * 15 + 15; // 15s to 30s
             const swayDuration = Math.random() * 4 + 4; // 4s to 8s
             
-            svg.style.width = `${size}px`;
-            svg.style.height = `${size}px`;
-            svg.style.left = `${left}%`;
-            svg.style.top = `${top}%`;
-            
-            svg.style.animation = `
+            wrapper.style.position = "absolute";
+            wrapper.style.width = `${size}px`;
+            wrapper.style.height = `${size}px`;
+            wrapper.style.left = `${left}%`;
+            wrapper.style.top = `${top}%`;
+            wrapper.style.pointerEvents = "none";
+            wrapper.style.zIndex = "2";
+            wrapper.style.animation = `
                 floatDown ${duration}s linear infinite,
                 sway ${swayDuration}s ease-in-out infinite alternate
             `;
-            svg.style.animationDelay = `${delay}s, ${Math.random() * 5}s`;
+            wrapper.style.animationDelay = `${delay}s, ${Math.random() * 5}s`;
             
-            petalsContainer.appendChild(svg);
+            svg.style.width = "100%";
+            svg.style.height = "100%";
+            svg.style.display = "block";
+            svg.style.transition = "transform 0.4s cubic-bezier(0.1, 0.8, 0.3, 1)";
+            
+            petalsContainer.appendChild(wrapper);
         }
     }
 
@@ -273,13 +284,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const diffY = petalY - mouseY;
                 const distance = Math.sqrt(diffX * diffX + diffY * diffY);
                 
-                // Wind push radius 200px
-                if (distance < 200) {
-                    const force = (200 - distance) / 200;
-                    const pushX = (diffX / distance) * 50 * force;
-                    const pushY = (diffY / distance) * 50 * force;
+                if (distance < 220) {
+                    const force = (220 - distance) / 220;
+                    const pushX = (diffX / distance) * 70 * force;
+                    const pushY = (diffY / distance) * 70 * force;
                     
-                    petal.style.transform = `translate(${pushX}px, ${pushY}px) rotate(${force * 45}deg)`;
+                    petal.style.transform = `translate(${pushX}px, ${pushY}px) rotate(${diffX > 0 ? force * 45 : -force * 45}deg)`;
                 } else {
                     petal.style.transform = 'translate(0px, 0px) rotate(0deg)';
                 }
