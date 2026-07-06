@@ -694,7 +694,7 @@ a {
 
 .about-grid {
     display: grid;
-    grid-template-columns: 4.5fr 5.5fr;
+    grid-template-columns: 5fr 5fr;
     gap: 80px;
     align-items: center;
 }
@@ -707,7 +707,7 @@ a {
 
 .silhouette-box {
     width: 100%;
-    max-width: 420px;
+    max-width: 480px;
     position: relative;
     border: 1px solid var(--border-color);
     background: var(--bg-paper);
