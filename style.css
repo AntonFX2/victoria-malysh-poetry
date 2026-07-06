@@ -707,11 +707,11 @@ a {
 
 .silhouette-box {
     width: 100%;
-    max-width: 280px;
+    max-width: 420px;
     position: relative;
     border: 1px solid var(--border-color);
     background: var(--bg-paper);
-    padding: 12px;
+    padding: 16px;
     border-radius: 4px;
     box-shadow: 0 15px 35px var(--shadow-color);
     transition: var(--transition-smooth);
