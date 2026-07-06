@@ -10,10 +10,13 @@
     --bg-base: #FAF6EE;
     --bg-paper: #F5EFE4;
     --bg-page-gradient: radial-gradient(circle, #FAF6EE 60%, #EADFC9 100%);
+    --bg-header: rgba(250, 246, 238, 0.75);
     --color-text: #1A1D20;
     --color-text-muted: #5A5D62;
     --color-accent: #C5A880;
-    --color-accent-rgb: 197, 168, 128;
+    --color-accent-alpha-02: rgba(197, 168, 128, 0.02);
+    --color-accent-alpha-05: rgba(197, 168, 128, 0.05);
+    --color-accent-alpha-35: rgba(197, 168, 128, 0.35);
     --border-color: #EADFC9;
     --shadow-color: rgba(26, 29, 32, 0.08);
     --glow-color: rgba(197, 168, 128, 0.2);
@@ -28,10 +31,13 @@ body[data-theme="romance"] {
     --bg-base: #FFF3F3;
     --bg-paper: #FFEAEB;
     --bg-page-gradient: radial-gradient(circle, #FFF3F3 60%, #F5D3D3 100%);
+    --bg-header: rgba(255, 243, 243, 0.75);
     --color-text: #2D1414;
     --color-text-muted: #7D5B5B;
     --color-accent: #FF6B6B;
-    --color-accent-rgb: 255, 107, 107;
+    --color-accent-alpha-02: rgba(255, 107, 107, 0.02);
+    --color-accent-alpha-05: rgba(255, 107, 107, 0.05);
+    --color-accent-alpha-35: rgba(255, 107, 107, 0.35);
     --border-color: #F5D3D3;
     --shadow-color: rgba(255, 107, 107, 0.12);
     --glow-color: rgba(255, 107, 107, 0.35);
@@ -42,10 +48,13 @@ body[data-theme="philosophy"] {
     --bg-base: #0E0F12;
     --bg-paper: #16181E;
     --bg-page-gradient: radial-gradient(circle, #16181E 40%, #0E0F12 100%);
+    --bg-header: rgba(22, 24, 30, 0.75);
     --color-text: #E5E9F0;
     --color-text-muted: #8E9AAB;
     --color-accent: #8B5CF6;
-    --color-accent-rgb: 139, 92, 246;
+    --color-accent-alpha-02: rgba(139, 92, 246, 0.02);
+    --color-accent-alpha-05: rgba(139, 92, 246, 0.05);
+    --color-accent-alpha-35: rgba(139, 92, 246, 0.35);
     --border-color: #2E3440;
     --shadow-color: rgba(139, 92, 246, 0.15);
     --glow-color: rgba(139, 92, 246, 0.4);
@@ -56,10 +65,13 @@ body[data-theme="irony"] {
     --bg-base: #0A0D10;
     --bg-paper: #12161B;
     --bg-page-gradient: radial-gradient(circle, #12161B 50%, #0A0D10 100%);
+    --bg-header: rgba(18, 22, 27, 0.75);
     --color-text: #E6F4EA;
     --color-text-muted: #8CA090;
     --color-accent: #10B981;
-    --color-accent-rgb: 16, 185, 129;
+    --color-accent-alpha-02: rgba(16, 185, 129, 0.02);
+    --color-accent-alpha-05: rgba(16, 185, 129, 0.05);
+    --color-accent-alpha-35: rgba(16, 185, 129, 0.35);
     --border-color: #1F2824;
     --shadow-color: rgba(16, 185, 129, 0.15);
     --glow-color: rgba(16, 185, 129, 0.45);
@@ -167,7 +179,7 @@ a {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border-color);
-    background: rgba(var(--bg-base), 0.7);
+    background: var(--bg-header);
     transition: var(--transition-smooth);
 }
 
@@ -280,12 +292,12 @@ a {
 .floating-scroll-card {
     width: 90%;
     max-width: 580px;
-    background: rgba(var(--color-accent-rgb), 0.02);
+    background: var(--bg-paper);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 60px 50px;
     box-shadow: 0 30px 60px var(--shadow-color), 
-                inset 0 0 30px rgba(var(--color-accent-rgb), 0.05);
+                inset 0 0 30px var(--color-accent-alpha-05);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: relative;
@@ -313,7 +325,7 @@ a {
     left: 15px;
     right: 15px;
     bottom: 15px;
-    border: 1px solid rgba(var(--color-accent-rgb), 0.35);
+    border: 1px solid var(--color-accent-alpha-35);
     pointer-events: none;
     border-radius: 4px;
 }
@@ -681,7 +693,7 @@ a {
    ========================================================================== */
 .about-section {
     border-top: 1px solid var(--border-color);
-    background: rgba(var(--color-accent-rgb), 0.02);
+    background: var(--color-accent-alpha-02);
     transition: var(--transition-smooth);
 }
 
