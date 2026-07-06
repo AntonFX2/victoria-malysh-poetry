@@ -258,204 +258,73 @@ a {
    HERO SECTION & BOOK SPREAD
    ========================================================================== */
 /* ==========================================================================
-   HERO SECTION: FLOATING DRAFTS (CABINET)
+   HERO SECTION: SPLIT SCREEN (CONTRAST SPLIT)
    ========================================================================== */
-.hero-cabinet {
+.hero-split {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 80px;
     position: relative;
     overflow: hidden;
-    perspective: 1000px;
 }
 
-.cabinet-ambient-light {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 120vw;
-    height: 120vh;
-    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.08) 0%, rgba(0, 0, 0, 0) 65%);
-    pointer-events: none;
-    z-index: 1;
-    animation: pulseLight 10s infinite alternate ease-in-out;
-}
-
-@keyframes pulseLight {
-    0% { opacity: 0.7; transform: translate(-50%, -50%) scale(1.0); }
-    100% { opacity: 1.2; transform: translate(-50%, -50%) scale(1.05); }
-}
-
-.hero-cabinet-grid {
-    width: 100%;
+/* Left Half: Classic Parchment */
+.hero-split-left {
+    flex: 1;
+    min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    background-color: var(--bg-base);
+    padding: 60px;
     position: relative;
-    z-index: 2;
+    transition: var(--transition-smooth);
 }
 
-.parallax-desk-scene {
-    position: relative;
-    width: 100%;
-    max-width: 960px;
-    height: 520px;
-    transform-style: preserve-3d;
-    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.desk-element {
-    position: absolute;
-    transform-style: preserve-3d;
-    transition: transform 0.1s ease-out;
-}
-
-/* Background digital art canvas frame */
-.desk-art-frame {
-    width: 320px;
-    height: 320px;
-    right: 5%;
-    top: 15%;
-    z-index: 1;
-    background: #000;
-    border-radius: 6px;
-    padding: 10px;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 25px var(--glow-color);
-    border: 1px solid rgba(var(--color-accent-rgb), 0.25);
-    overflow: hidden;
-}
-
-.desk-art-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.85;
-    border-radius: 4px;
-    filter: saturate(1.1);
-}
-
-.desk-art-glow {
+.left-paper-texture {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(var(--color-accent-rgb), 0.2) 0%, rgba(0,0,0,0) 100%);
+    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.03) 0%, rgba(0,0,0,0) 80%);
     pointer-events: none;
 }
 
-/* Paper Draft Sheets base styling */
-.draft-sheet {
-    width: 380px;
-    height: 460px;
-    background: var(--bg-paper);
-    color: var(--color-text);
-    border: 1px solid var(--border-color);
-    box-shadow: 3px 12px 30px var(--shadow-color);
-    border-radius: 2px;
-    padding: 35px 30px;
-    transition: var(--transition-smooth), transform 0.1s ease-out;
-    background-image: 
-        repeating-linear-gradient(rgba(var(--color-accent-rgb), 0.0) 0px, rgba(var(--color-accent-rgb), 0.0) 23px, rgba(var(--color-accent-rgb), 0.1) 24px);
-}
-
-.sheet-content {
-    height: 100%;
+.hero-poetry-container {
+    max-width: 480px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-/* Stacked sheets positions and angles */
-.back-sheet {
-    left: 8%;
-    top: 5%;
+    align-items: center;
+    text-align: center;
+    position: relative;
     z-index: 2;
-    opacity: 0.65;
-    background: var(--bg-paper);
-    filter: blur(0.5px) brightness(0.9);
 }
 
-.middle-sheet {
-    left: 18%;
-    top: 10%;
-    z-index: 3;
-    opacity: 0.85;
-    background: var(--bg-paper);
-    filter: brightness(0.95);
-}
-
-.main-sheet {
-    left: 28%;
-    top: 15%;
-    z-index: 4;
-    box-shadow: 8px 20px 45px rgba(0,0,0,0.18), 0 0 15px var(--glow-color);
-    background: var(--bg-base);
-}
-
-/* Draft Content details */
-.draft-title {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    opacity: 0.4;
-    text-transform: uppercase;
-}
-
-.draft-scribble {
+.poetry-monogram {
     font-family: var(--font-serif);
-    font-size: 1.15rem;
-    line-height: 1.8;
+    font-size: 1.3rem;
     font-style: italic;
-    opacity: 0.35;
-    margin-top: 10px;
-}
-
-.sheet-header-tag {
-    font-family: var(--font-sans);
-    font-size: 0.75rem;
-    font-weight: 600;
     color: var(--color-accent);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    border: 1px solid var(--border-color);
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 8px;
-}
-
-.sheet-signature {
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
-    font-style: italic;
-    align-self: flex-end;
-    color: var(--color-accent);
-    opacity: 0.8;
-}
-
-.ink-stain-small {
-    position: absolute;
-    bottom: 40px;
-    right: 40px;
-    width: 25px;
-    height: 25px;
-    background: var(--color-text);
-    border-radius: 50%;
-    opacity: 0.08;
-    filter: blur(1.5px);
+    justify-content: center;
+    margin-bottom: 35px;
+    box-shadow: 0 0 15px var(--glow-color);
+    background: var(--bg-paper);
+    transition: var(--transition-smooth);
 }
 
 .typed-poem-container {
     font-family: var(--font-serif);
-    font-size: 1.35rem;
-    line-height: 1.8;
+    font-size: 1.45rem;
+    line-height: 1.9;
     font-style: italic;
     color: var(--color-text);
-    margin-top: 10px;
+    transition: var(--transition-smooth);
 }
 
 .poem-line {
@@ -475,6 +344,122 @@ a {
         transform: translateY(0);
     }
 }
+
+.poetry-signature {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-style: italic;
+    color: var(--color-accent);
+    margin-top: 35px;
+    opacity: 0.85;
+}
+
+/* Right Half: Dark Neon Digital Canvas */
+.hero-split-right {
+    flex: 1;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #0E1115;
+    padding: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Custom background neon light pulses in right side */
+.right-ambient-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    background: radial-gradient(circle, rgba(var(--color-accent-rgb), 0.12) 0%, rgba(0, 0, 0, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+    animation: pulseGlowRight 8s infinite alternate ease-in-out;
+}
+
+@keyframes pulseGlowRight {
+    0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.8; }
+    100% { transform: translate(-50%, -50%) scale(1.1); opacity: 1.2; }
+}
+
+.canvas-art-wrapper {
+    position: relative;
+    width: 85%;
+    max-width: 380px;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    box-shadow: 0 25px 55px rgba(0,0,0,0.5);
+    z-index: 2;
+    transition: transform 0.5s ease;
+}
+
+.canvas-art-wrapper:hover {
+    transform: scale(1.02);
+}
+
+.canvas-art-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+}
+
+.canvas-glow-border {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 8px;
+    background: linear-gradient(135deg, var(--color-accent) 0%, rgba(var(--color-accent-rgb), 0.2) 50%, var(--color-accent) 100%);
+    z-index: -1;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 15px var(--glow-color));
+}
+
+.canvas-glass-card {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    padding: 12px 20px;
+    background: rgba(14, 17, 21, 0.7);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 4px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 5;
+}
+
+.canvas-card-title {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255,255,255,0.9);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Dividing Glow Line */
+.hero-split-divider {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(var(--color-accent-rgb), 0) 0%, var(--color-accent) 50%, rgba(var(--color-accent-rgb), 0) 100%);
+    z-index: 10;
+    box-shadow: 0 0 12px var(--glow-color);
+}
+
 
 
 .scroll-down-hint {
@@ -1384,6 +1369,26 @@ a {
    ========================================================================== */
 @media (max-width: 992px) {
     html { font-size: 15px; }
+
+    .hero-split {
+        flex-direction: column;
+        min-height: auto;
+    }
+
+    .hero-split-left, .hero-split-right {
+        flex: none;
+        width: 100%;
+        min-height: 50vh;
+        padding: 60px 30px;
+    }
+
+    .hero-split-divider {
+        width: 100%;
+        height: 1px;
+        left: 0;
+        top: 50%;
+        background: linear-gradient(to right, rgba(var(--color-accent-rgb), 0) 0%, var(--color-accent) 50%, rgba(var(--color-accent-rgb), 0) 100%);
+    }
 
     .book-container {
         aspect-ratio: auto;

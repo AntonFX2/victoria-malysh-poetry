@@ -42,56 +42,39 @@
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section (New Floating Sheets Parallax) -->
-        <section id="hero" class="hero-section hero-cabinet">
-            <!-- Glowing desk lamp/ambient light source behind -->
-            <div class="cabinet-ambient-light"></div>
-            
-            <div class="section-container hero-cabinet-grid">
-                <!-- Parallax Stack Wrapper -->
-                <div class="parallax-desk-scene" id="desk-scene">
-                    
-                    <!-- Background Digital Art Canvas -->
-                    <div class="desk-element desk-art-frame parallax-layer" data-depth="0.15">
-                        <img src="poetry_hero_art.png" alt="Неоновый Арт" class="desk-art-img">
-                        <div class="desk-art-glow"></div>
+        <!-- Hero Section (New Split Screen Contrast Design) -->
+        <section id="hero" class="hero-section hero-split">
+            <!-- Left Side: Classic Parchment with Poetry -->
+            <div class="hero-split-left">
+                <div class="left-paper-texture"></div>
+                <div class="hero-poetry-container">
+                    <div class="poetry-monogram">В.М.</div>
+                    <div class="typed-poem-container">
+                        <p class="poem-line line-1">Я пишу эти строки на стыке времён,</p>
+                        <p class="poem-line line-2">Где неоновый свет в старый свиток влюблён.</p>
+                        <p class="poem-line line-3">Здесь чернила горят, словно звёзды в ночи,</p>
+                        <p class="poem-line line-4">Посиди же со мной и пока помолчи...</p>
                     </div>
-
-                    <!-- Background Sheet 2 (Secondary Draft) -->
-                    <div class="desk-element draft-sheet back-sheet parallax-layer" data-depth="0.3">
-                        <div class="sheet-content">
-                            <p class="draft-title">Скетч #12</p>
-                            <p class="draft-scribble">...рифма кружится несмело...</p>
-                            <p class="draft-scribble">...всё, что сгорело, улетело...</p>
-                            <div class="ink-stain-small"></div>
-                        </div>
-                    </div>
-
-                    <!-- Background Sheet 1 (Secondary Draft) -->
-                    <div class="desk-element draft-sheet middle-sheet parallax-layer" data-depth="0.45">
-                        <div class="sheet-content">
-                            <p class="draft-title">Ночные мысли</p>
-                            <p class="draft-scribble">Звёзды падают на крыши,</p>
-                            <p class="draft-scribble">Кто-то тихий нас услышит...</p>
-                        </div>
-                    </div>
-
-                    <!-- Foreground Sheet (Main Poem) -->
-                    <div class="desk-element draft-sheet main-sheet parallax-layer" data-depth="0.7">
-                        <div class="sheet-content">
-                            <span class="sheet-header-tag"><i class="fa-solid fa-feather-pointed"></i> Лист I</span>
-                            <div class="typed-poem-container">
-                                <p class="poem-line line-1">Я пишу эти строки на стыке времён,</p>
-                                <p class="poem-line line-2">Где неоновый свет в старый свиток влюблён.</p>
-                                <p class="poem-line line-3">Здесь чернила горят, словно звёзды в ночи,</p>
-                                <p class="poem-line line-4">Посиди же со мной и пока помолчи...</p>
-                            </div>
-                            <div class="sheet-signature">Виктория Малыш</div>
-                        </div>
-                    </div>
-                    
+                    <div class="poetry-signature">Виктория Малыш</div>
                 </div>
             </div>
+
+            <!-- Right Side: Dark Neon Digital Canvas -->
+            <div class="hero-split-right">
+                <div class="right-ambient-glow"></div>
+                <div class="canvas-art-wrapper">
+                    <div class="canvas-glow-border"></div>
+                    <img src="poetry_hero_art.png" alt="Неоновая Поэзия" class="canvas-art-img">
+                    <div class="canvas-glass-card">
+                        <span class="canvas-card-title"><i class="fa-solid fa-wand-magic-sparkles"></i> Лист 01. Рождение Смысла</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Glowing Split Line -->
+            <div class="hero-split-divider"></div>
+
+            <!-- Scroll indicator -->
             <div class="scroll-down-hint">
                 <span class="scroll-text">Листать манускрипт</span>
                 <i class="fa-solid fa-chevron-down bounce-arrow"></i>
